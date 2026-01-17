@@ -517,10 +517,31 @@ class FolderListWidget(QListWidget):
                     event.acceptProposedAction()
                     return  # ★★★ 必须立刻返回，阻止 fill_placeholder
                 else:
+                    # ===== 多个文件直接拖入 =====
+                    if self.name == 'subtitle':
+                        mode = getattr(self, 'add_mode_combo', None)
+                        has_real_items = self.line_count() > 0
+
+                        if not (
+                                mode
+                                and mode.currentText() == "添加新文件：追加"
+                                and has_real_items
+                        ):
+                            # 覆盖模式 or 原本没有真实字幕
+                            self.clear()
+                        else:
+                            # 真正的追加
+                            self.remove_leading_placeholders()
+
                     for p in paths:
                         if os.path.isfile(p):
                             name = os.path.basename(p)
                             self.addItem(self.create_file_item(name, p))
+
+                    self.fill_placeholder()
+                    event.acceptProposedAction()
+                    self.reload_results()
+                    return
 
                 self.fill_placeholder()
                 event.acceptProposedAction()
