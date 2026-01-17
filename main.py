@@ -821,7 +821,7 @@ class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("U2字幕重命名工具")
+        self.setWindowTitle("字幕重命名工具")
         self.resize(1000, 520)
 
         main_layout = QVBoxLayout(self)
