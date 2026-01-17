@@ -543,11 +543,6 @@ class FolderListWidget(QListWidget):
                     self.reload_results()
                     return
 
-                self.fill_placeholder()
-                event.acceptProposedAction()
-                self.reload_results()
-                return
-
             self.reload_results()
 
             self.fill_placeholder()
