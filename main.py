@@ -861,7 +861,7 @@ class MainWindow(QWidget):
         self.suffix_combo = QComboBox()
         self.suffix_combo.setEditable(True)
         self.suffix_combo.addItems(
-            ["", ".chs", ".cht", ".sc", ".tc", ".big5", ".gb"]
+            ["", ".zh-Hans", ".zh-Hant", ".chs", ".cht", ".sc", ".tc", ".big5", ".gb"]
         )
         bottom.addWidget(self.suffix_combo)
         self.suffix_combo.currentTextChanged.connect(self.video.list.reload_results)
