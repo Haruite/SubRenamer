@@ -3,7 +3,7 @@
 2.https://www.rarlab.com/rar_add.htm 下载unrar，注意windows版下载后还需要解压。  
 3.修改代码中的UNRAR_PATH为刚才下载的unrar可执行文件的路径。  
 4.python main.py运行。  
-5.Windows下也可下载release中的main.py运行  
+5.Windows下也可下载release中的main.exe运行  
 
 用法简介：  
 1.”视频文件“列拖入视频所在的文件夹或者多个视频。拖入文件夹会自动选取文件夹中的主要视频文件（有PV/OP/ED/SP/OVA不用担心，会自动过滤掉），如果选择不对（有时候会少一两集）请选择所有的要重命名的视频文件拖入，拖入时鼠标应放在第一个文件所在的位置。  
