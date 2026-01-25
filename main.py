@@ -939,7 +939,7 @@ class MainWindow(QWidget):
                                 video_folder = os.path.dirname(os.path.normpath(video_path))
                                 new_sub = os.path.join(video_folder, new_name)
                                 shutil.copy(new_path, new_sub)
-                                print(f'复制字幕文件：{new_sub} -> {new_sub}')
+                                print(f'复制字幕文件：{new_path} -> {new_sub}')
 
                             success_count += 1
                         else:
