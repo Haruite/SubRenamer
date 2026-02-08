@@ -838,7 +838,7 @@ class MainWindow(QWidget):
         super().__init__()
 
         self.setWindowTitle("字幕重命名工具")
-        self.resize(1000, 520)
+        self.resize(1500, 780)
 
         main_layout = QVBoxLayout(self)
 
@@ -851,7 +851,7 @@ class MainWindow(QWidget):
         splitter.addWidget(self.video)
         splitter.addWidget(self.sub)
         splitter.addWidget(self.result)
-        splitter.setSizes([333, 333, 334])
+        splitter.setSizes([500, 500, 500])
 
         main_layout.addWidget(splitter)
 
