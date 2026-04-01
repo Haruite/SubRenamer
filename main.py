@@ -632,24 +632,32 @@ class FolderListWidget(QListWidget):
             self.reload_results()
 
     def sort_files(self):
-        names = [
-            self.item(i).text()
-            for i in range(self.count())
-            if self.is_real_item(self.item(i))
-        ]
+        # 1. 同时提取 文本 和 绑定的 路径数据
+        items_data = []
+        for i in range(self.count()):
+            item = self.item(i)
+            if self.is_real_item(item):
+                text = item.text()
+                path = item.data(Qt.ItemDataRole.UserRole)
+                items_data.append((text, path))
 
-        names.sort(
-            key=natural_key,
+        # 2. 根据文本进行自然排序
+        items_data.sort(
+            key=lambda x: natural_key(x[0]),
             reverse=not self.sort_ascending
         )
 
+        # 3. 清空并重新插入带数据的 Item
         self.clear()
-        for name in names:
-            self.addItem(self.create_file_item(name))
+        for text, path in items_data:
+            new_item = self.create_file_item(text, path)  # 确保 path 被传入
+            self.addItem(new_item)
 
         self.sort_ascending = not self.sort_ascending
         self.fill_placeholder()
-        if self.name == 'video':
+
+        # 4. 排序后触发结果列的重绘，以同步 UserRole 到 Result 列表
+        if self.name in ('video', 'subtitle'):
             self.reload_results()
 
     def clear_files(self):
